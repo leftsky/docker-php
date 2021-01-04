@@ -46,7 +46,7 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 -e "s/^;clear_env = no$/clear_env = no/" \
 /etc/php7/php-fpm.d/www.conf
 
-RUN sed -i s#upload_max_filesize = 2M#upload_max_filesize = 50M#g /etc/php7/php.ini
+RUN sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 50M#' /etc/php7/php.ini
 
 EXPOSE 443 80
 WORKDIR /var/www
