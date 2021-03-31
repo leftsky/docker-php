@@ -18,6 +18,7 @@ php7-fileinfo php7-mysqli php7-pdo php7-redis php7-gd php7-openssl php7-phar php
 php7-dom php7-iconv php7-simplexml php7-xml php7-xmlreader php7-xmlwriter php7-sqlite3 \
 php7-pdo_sqlite php7-pdo_mysql php7-tokenizer php7-pcntl php7-posix php7-bcmath
 
+RUN apk add git openssh
 RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin/ --filename=composer
 
