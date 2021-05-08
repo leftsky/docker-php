@@ -9,8 +9,8 @@ COPY fastcgi.conf /etc/nginx/fastcgi.conf
 COPY pathinfo.conf /etc/nginx/pathinfo.conf
 
 RUN echo "#aliyun" > /etc/apk/repositories
-RUN echo "https://mirrors.aliyun.com/alpine/v3.12/main/" >> /etc/apk/repositories
-RUN echo "https://mirrors.aliyun.com/alpine/v3.12/community/" >> /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.13/main/" >> /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.13/community/" >> /etc/apk/repositories
 RUN apk update
 
 RUN apk add --update curl php7-fpm php7 php7-zip php7-zlib php7-curl php7-mbstring \
