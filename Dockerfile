@@ -50,6 +50,16 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 
 RUN sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 50M#' /etc/php7/php.ini
 
+RUN apk add gcc g++ php7-dev make
+COPY swoole-src-4.7.1.tar.gz /home/swoole.tar.gz
+WORKDIR /home
+RUN tar -xvf /home/swoole.tar.gz
+WORKDIR "/home/swoole-src-4.7.1"
+RUN phpize
+RUN ./configure
+RUN make && make install
+RUN sed -i '$aextension=swoole.so' /etc/php7/php.ini
+
 EXPOSE 443 80
 WORKDIR /var/www
 
