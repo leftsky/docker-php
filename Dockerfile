@@ -13,6 +13,11 @@ RUN echo "https://mirrors.aliyun.com/alpine/v3.12/main/" >> /etc/apk/repositorie
 RUN echo "https://mirrors.aliyun.com/alpine/v3.12/community/" >> /etc/apk/repositories
 RUN apk update
 
+# 设置时区
+RUN apk add tzdata \
+&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+&& echo "Asia/Shanghai" > /etc/timezone
+
 RUN apk add --update curl php7-fpm php7 php7-zip php7-zlib php7-curl php7-mbstring \
 php7-fileinfo php7-mysqli php7-pdo php7-redis php7-gd php7-openssl php7-phar php7-ctype \
 php7-dom php7-iconv php7-simplexml php7-xml php7-xmlreader php7-xmlwriter php7-sqlite3 \
