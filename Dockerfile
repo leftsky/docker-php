@@ -18,12 +18,13 @@ RUN apk add tzdata \
 && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 && echo "Asia/Shanghai" > /etc/timezone
 
-RUN apk add --update curl php7-fpm php7 php7-zip php7-zlib php7-curl php7-mbstring \
-php7-fileinfo php7-mysqli php7-pdo php7-redis php7-gd php7-openssl php7-phar php7-ctype \
-php7-dom php7-iconv php7-simplexml php7-xml php7-xmlreader php7-xmlwriter php7-sqlite3 \
-php7-pdo_sqlite php7-pdo_mysql php7-tokenizer php7-pcntl php7-posix php7-bcmath php7-json \
-php7-opcache php7-memcached
+RUN apk add --update curl php8-fpm php8 php8-zip php8-zlib php8-curl php8-mbstring \
+php8-fileinfo php8-mysqli php8-pdo php8-redis php8-gd php8-openssl php8-phar php8-ctype \
+php8-dom php8-iconv php8-simplexml php8-xml php8-xmlreader php8-xmlwriter php8-sqlite3 \
+php8-pdo_sqlite php8-pdo_mysql php8-tokenizer php8-pcntl php8-posix php8-bcmath php8-json \
+php8-opcache
 
+RUN ln -s /usr/bin/php8 /usr/bin/php
 RUN apk add git openssh
 RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin/ --filename=composer
@@ -41,7 +42,7 @@ chmod 755 /start.sh
 
 RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" \
 -e "s/variables_order = \"GPCS\"/variables_order = \"EGPCS\"/g" \
-/etc/php7/php.ini && \
+/etc/php8/php.ini && \
 sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 -e "s/;catch_workers_output\s*=\s*yes/catch_workers_output = yes/g" \
 -e "s/user = nobody/user = nginx/g" \
@@ -51,9 +52,9 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 -e "s/;listen.group = nobody/listen.group = nginx/g" \
 -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
 -e "s/^;clear_env = no$/clear_env = no/" \
-/etc/php7/php-fpm.d/www.conf
+/etc/php8/php-fpm.d/www.conf
 
-RUN sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 50M#' /etc/php7/php.ini
+RUN sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 50M#' /etc/php8/php.ini
 
 EXPOSE 443 80
 WORKDIR /var/www
