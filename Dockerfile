@@ -55,6 +55,7 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 /etc/php8/php-fpm.d/www.conf
 
 RUN sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 50M#' /etc/php8/php.ini
+RUN sed -i 's#post_max_size = 8M#post_max_size = 50M#' /etc/php8/php.ini
 
 EXPOSE 443 80
 WORKDIR /var/www
