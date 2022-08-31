@@ -22,7 +22,7 @@ RUN apk add --update curl php8-fpm php8 php8-zip php8-zlib php8-curl php8-mbstri
 php8-fileinfo php8-mysqli php8-pdo php8-redis php8-gd php8-openssl php8-phar php8-ctype \
 php8-dom php8-iconv php8-simplexml php8-xml php8-xmlreader php8-xmlwriter php8-sqlite3 \
 php8-pdo_sqlite php8-pdo_mysql php8-tokenizer php8-pcntl php8-posix php8-bcmath php8-json \
-php8-opcache
+php8-opcache php8-sodium
 
 RUN ln -s /usr/bin/php8 /usr/bin/php
 RUN apk add git openssh
