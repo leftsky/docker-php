@@ -22,7 +22,7 @@ RUN apk add --update curl php81-fpm php81 php81-zip php81-zlib php81-curl php81-
 php81-fileinfo php81-mysqli php81-pdo php81-redis php81-gd php81-openssl php81-phar php81-ctype \
 php81-dom php81-iconv php81-simplexml php81-xml php81-xmlreader php81-xmlwriter php81-sqlite3 \
 php81-pdo_sqlite php81-pdo_mysql php81-tokenizer php81-pcntl php81-posix php81-bcmath php81-json \
-php81-opcache php81-sodium
+php81-opcache php81-sodium php81-mongodb
 
 RUN #ln -s /usr/bin/php81 /usr/bin/php
 RUN apk add git openssh
