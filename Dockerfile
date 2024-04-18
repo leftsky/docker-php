@@ -1,4 +1,4 @@
-FROM nginx:mainline-alpine
+FROM nginx:1.19.10-alpine
 LABEL maintainer="leftsky <leftsky@vip.qq.com>" 
 
 COPY start.sh /start.sh
@@ -25,10 +25,9 @@ php7-pdo_sqlite php7-pdo_mysql php7-tokenizer php7-pcntl php7-posix php7-bcmath 
 php7-opcache php7-memcached php7-mongodb
 
 RUN apk add git openssh
-# RUN curl -sS https://getcomposer.org/installer
-# RUN php -- --install-dir=/usr/bin/ --filename=composer
-COPY --from=composer/composer:latest /usr/bin/composer /usr/bin/composer
-RUN composer --version
+RUN curl -sS https://getcomposer.org/installer | \
+php -- --install-dir=/usr/bin/ --filename=composer
+
 
 RUN apk add --update bash supervisor
 
