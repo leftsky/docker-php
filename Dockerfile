@@ -25,8 +25,10 @@ php7-pdo_sqlite php7-pdo_mysql php7-tokenizer php7-pcntl php7-posix php7-bcmath 
 php7-opcache php7-memcached php7-mongodb
 
 RUN apk add git openssh
-RUN curl -sS https://getcomposer.org/installer
-RUN php -- --install-dir=/usr/bin/ --filename=composer
+# RUN curl -sS https://getcomposer.org/installer
+# RUN php -- --install-dir=/usr/bin/ --filename=composer
+COPY --from=composer/composer:latest /usr/bin/composer /usr/bin/composer
+RUN composer --version
 
 RUN apk add --update bash supervisor
 
