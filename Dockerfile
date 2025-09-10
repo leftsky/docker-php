@@ -9,8 +9,8 @@ COPY fastcgi.conf /etc/nginx/fastcgi.conf
 COPY pathinfo.conf /etc/nginx/pathinfo.conf
 
 RUN echo "#aliyun" > /etc/apk/repositories
-RUN echo "https://mirrors.aliyun.com/alpine/v3.22/main/" >> /etc/apk/repositories
-RUN echo "https://mirrors.aliyun.com/alpine/v3.22/community/" >> /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.19/main/" >> /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.19/community/" >> /etc/apk/repositories
 RUN apk update
 
 # 设置时区
@@ -24,7 +24,7 @@ php83-dom php83-iconv php83-simplexml php83-xml php83-xmlreader php83-xmlwriter 
 php83-pdo_sqlite php83-pdo_mysql php83-tokenizer php83-pcntl php83-posix php83-bcmath php83-json \
 php83-opcache php83-sodium php83-mongodb php83-intl
 
-# RUN ln -s /usr/bin/php83 /usr/bin/php
+RUN ln -s /usr/bin/php83 /usr/bin/php
 RUN apk add git openssh
 RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin/ --filename=composer
