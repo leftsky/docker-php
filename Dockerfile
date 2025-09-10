@@ -22,9 +22,9 @@ RUN apk add --update curl php84-fpm php84 php84-zip php84-zlib php84-curl php84-
 php84-fileinfo php84-mysqli php84-pdo php84-redis php84-gd php84-openssl php84-phar php84-ctype \
 php84-dom php84-iconv php84-simplexml php84-xml php84-xmlreader php84-xmlwriter php84-sqlite3 \
 php84-pdo_sqlite php84-pdo_mysql php84-tokenizer php84-pcntl php84-posix php84-bcmath php84-json \
-php84-opcache php84-sodium php84-mongodb php84-intl
+php84-opcache php84-sodium php84-intl
 
-# RUN ln -s /usr/bin/php84 /usr/bin/php
+RUN ln -s /usr/bin/php84 /usr/bin/php
 RUN apk add git openssh
 RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin/ --filename=composer
